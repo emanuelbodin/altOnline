@@ -9,9 +9,6 @@ mydb = mysql.connector.connect(
 )
 
 
-# gustavs print
-print("Gustavs test")
-
 mycursor = mydb.cursor()
 
 def tablesInit():
