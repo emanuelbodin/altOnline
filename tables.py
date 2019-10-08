@@ -8,6 +8,7 @@ mydb = mysql.connector.connect(
   database="altOnline"
 )
 
+
 mycursor = mydb.cursor()
 
 def tablesInit():
