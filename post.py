@@ -36,6 +36,6 @@ def initProducts():
   insertProduct("Macbook", "Macbook from apple", 900, 100, "computers")
 
 
-
-initProducts()
+#initTables()
+#initProducts()
 
