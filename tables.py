@@ -7,7 +7,7 @@ mydb = mysql.connector.connect(
   port=8889,
   database="altOnline"
 )
-
+#hejhej
 mycursor = mydb.cursor()
 
 def tablesInit():
