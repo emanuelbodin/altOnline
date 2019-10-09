@@ -4,7 +4,7 @@ mydb = mysql.connector.connect(
   host="localhost",
   user="root",
   passwd="root",
-  port=8889,
+  port=3306,
   database="altOnline"
 )
 
@@ -40,9 +40,9 @@ def setDiscount(productTitle, discount):
 print(isLeafDepartment('IPads'))
 
 while (1):
-    toDo = input("Do you want to list all products from a departemt or set discount for a specific product? (type y or n)")
-    if (toDo == 'y'):
-        department = input("Enter a department:")
+    toDo = input("Do you want to list all products from a department or set discount for a specific product? (type 'dep' or 'disc' or 'quit') : ")
+    if (toDo == 'dep'):
+        department = input("Enter a department: ")
         if (isLeafDepartment(department)):
             products = getDepartmentProducts(department)
             print("The " + department + " have the following products:")
@@ -54,18 +54,19 @@ while (1):
             print('Departments: ')
             for child in childDepartments:
                 print(child[0])
-    elif (toDo == 'n'):
+    elif (toDo == 'disc'):
         productTitle = input("Enter a product title to get it's discount: ")
         discount = getProductDiscount(productTitle)[0]
         print("The discount for " + productTitle + " is " + str(discount)+ "%")
-        ans = input("Do you want to update the discount? (y for yes or n for no)")
+        ans = input("Do you want to update the discount? (y for yes or n for no): ")
 
         if (ans == 'y'):
-            newDiscount = input("Enter new discount:")
+            newDiscount = input("Enter new discount: ")
             setDiscount(productTitle, newDiscount)
             newDiscount = getProductDiscount(productTitle)[0]
             print("New discount for " + productTitle + " is " + str(newDiscount) + "%")
-        else:
-            print('Bye!')
+    elif (toDo == 'quit'):
+        print('Bye!')
+        break
     else:
-        print("Error, you should press y or n")
+        print("Error, you should write 'dep' or 'disc'")
