@@ -25,7 +25,7 @@ dropTables()
 
 def tablesInit():
     mycursor.execute("CREATE TABLE IF NOT EXISTS departments (department_title varchar(255), description text(500), short_description text(50), breadcrumb varchar(255), parentDepartment varchar(255), PRIMARY KEY (department_title))")
-    mycursor.execute("CREATE TABLE IF NOT EXISTS products (product_title varchar(255), breadcrumb varchar(255), featured tinyint(1), hidden tinyint(1),  description text(500), price_without_tax int(11), tax_to_add int(11), discount int(11), stock int(11), department varchar(255), PRIMARY KEY (product_title), FOREIGN KEY (department) REFERENCES departments(department_title))")
+    mycursor.execute("CREATE TABLE IF NOT EXISTS products (product_title varchar(255), breadcrumb varchar(255), short_description text(100), featured tinyint(1), hidden tinyint(1),  description text(500), price_without_tax int(11), tax_to_add int(11), discount int(11), stock int(11), department varchar(255), PRIMARY KEY (product_title), FOREIGN KEY (department) REFERENCES departments(department_title))")
     mycursor.execute("CREATE TABLE IF NOT EXISTS city_zip_code (city varchar(255), zip_code varchar(255), PRIMARY KEY (city))")
     mycursor.execute("CREATE TABLE IF NOT EXISTS users (email varchar(255), id_no int(11), password varchar(255), name varchar(255), street varchar(255), phone varchar(255), newsletter tinyint(1), city varchar(255), PRIMARY KEY (email), FOREIGN KEY (city) REFERENCES city_zip_code(city))")
     mycursor.execute("CREATE TABLE IF NOT EXISTS orders (order_id int(11), tracking_id varchar(255), order_date datetime, order_status varchar(255), last_change_date datetime, payment_ref varchar(255), user_email varchar(255), PRIMARY KEY (order_id), FOREIGN KEY (user_email) REFERENCES users(email))")
